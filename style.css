@@ -1,0 +1,315 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+  }
+  
+  img.animated-gif1{
+    position: relative;
+    left:500px;
+    top:100px;
+    height: 310px;
+  }
+  #pop-up
+  {
+    text-align: center;
+    width:250px;
+    height:500px;
+    background-color: rgba(0, 0, 0, .9);
+    box-sizing: border-box;
+    padding:20px;
+    position: relative;
+    bottom:1500px;
+    color:white;
+    left:645px;
+    
+  }
+  #pop-up #x
+  {
+    position: relative;
+    left:96px;
+    top:-10px;
+  }
+  .open-button:hover {background-color: #3e8e41}
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #DCF8C6;
+    /*background-color: #ECE5DD;
+    overflow: hidden;*/
+    
+  }
+  .New_game
+  {
+    position: relative;
+    top:10px;
+    left:630px;
+  }
+  .open-button
+  {
+    position: relative;
+    left:690px;
+    padding:5px;
+    padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #191b17;
+  border: none;
+  border-radius: 15px;
+  width:150px;
+  height:70px;
+  text-align: center;
+  }
+  .player1
+  {
+    position: relative;
+    left:200px;
+    top:-20px;
+
+  }
+  .player1 h1
+  {
+    position: relative;
+    left:100px;
+  }
+  
+.player2
+{
+  position: relative;
+    left:830px;
+    top:-500px;
+  top:-410px;
+}
+.player2 h1{
+  position: relative;
+  left:130px;
+}
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #191b17;
+  border: none;
+  border-radius: 15px;
+  width:150px;
+  height:70px;
+  text-align: center;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+  .board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto)
+  }
+  
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    bottom:740px;
+  }
+  
+  .cell:first-child,
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  
+  .cell:nth-child(3n + 1) {
+    border-left: none;
+  }
+  
+  .cell:nth-child(3n + 3) {
+    border-right: none;
+  }
+  
+  .cell:last-child,
+  .cell:nth-child(8),
+  .cell:nth-child(7) {
+    border-bottom: none;
+  }
+  
+  .cell.x,
+  .cell.circle {
+    cursor: not-allowed;
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .cell.circle::before {
+    background-color: black;
+  }
+  
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: lightgrey;
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+  }
+  
+  .cell.x::before,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+  }
+  
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+  }
+  
+  .cell.circle::before,
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .cell.circle::before,
+  .board.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+  }
+  
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: #DCF8C6;
+  }
+  
+  .winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+  }
+  
+  .winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+  }
+  
+  .winning-message button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+  }
+  
+  .winning-message.show {
+    display: flex;
+  }
+  /*
+  .open-button {
+    background-color: black;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: relative;
+    bottom: -20px;
+    right: 45px;
+    width: 150px;
+  }*/
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    left: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
